@@ -23,7 +23,7 @@ pipeline {
 				withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
 					sh '''
 						docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-						docker push mehmetincefidan/capstone
+						docker push sandip9334/capstone
 					'''
 				}
 			}
@@ -33,7 +33,7 @@ pipeline {
 			steps {
 				withAWS(region:'us-east-1', credentials:'ecr_credentials') {
 					sh '''
-						kubectl config use-context arn:aws:eks:us-east-1:142977788479:cluster/capstonecluster
+						kubectl config use-context arn:aws:eks:us-east-1:143869692098:cluster/capstonecluster1
 					'''
 				}
 			}
